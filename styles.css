@@ -87,6 +87,8 @@ section#location > select > option {
   font-weight: 800;
 }
 
+/* CHART STYLES */
+
 .graph-container {
   display: none;
 }
@@ -111,4 +113,10 @@ section#location > select > option {
 
 .graph-container:nth-of-type(4) {
   background-color: lightgray;
+}
+
+#myChart {
+  margin: 50px;
+  padding: 50px;
+  background-color: white;
 }
