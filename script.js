@@ -1,4 +1,5 @@
 
+
 import { createSiteSelector } from "./siteSelector.js";
 import { Fetcher } from "./dynamicEndpoints.js";
 
@@ -66,3 +67,20 @@ const timeStampsIntoDate = (timestamp) => {
 //     date = date.toISOString().split("T")[0];
 //   });
 //}
+
+// Date picker values
+const startDateInput = document.querySelector("#start-date");
+const endDateInput = document.querySelector("#end-date");
+
+let today = new Date();
+today = today.toISOString().split("T")[0];
+const numberOfDays = 14;
+let passedDate = new Date(Date.now() - numberOfDays * 24 * 60 * 60 * 1000);
+passedDate = passedDate.toISOString().split("T")[0];
+
+startDateInput.value = passedDate;
+endDateInput.value = today;
+
+let startDate = startDateInput.value;
+let endDate = endDateInput.value;
+
