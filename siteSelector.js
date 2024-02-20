@@ -1,9 +1,9 @@
 let site = "notSet";
 
 const sites = {
-  Agnesberg: "Agnesberg",
-  Arketjarn: "Arketjärn",
   Eriksberg: "Eriksberg",
+  Arketjarn: "Arketjärn",
+  Agnesberg: "Agnesberg",
   Garda: "Gårda dämme",
   Harsjo: "Härsjö dämme",
   Kalleredsbacken: "Kålleredsbäcken",
