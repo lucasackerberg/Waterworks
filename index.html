@@ -1,13 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <select id="siteSelector"></select>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Waterworks</title>
+</head>
+
+<body>
+    <header>
+        <h1>WATERWORKS</h1>
+    </header>
+    <section id="location">
+        <h2>Plats</h2>
+        <select id="siteSelector">
+        </select>
+    </section>
+    <section id="results">
+        <!-- <h2>Eriksberg</h2> -->
+        <div id="tabs">
+            <div class="tab">
+                <h3>Nederbörd</h3>
+            </div>
+            <div class="tab">
+                <h3>Nivå</h3>
+            </div>
+            <div class="tab selected">
+                <h3>Flöde</h3>
+            </div>
+            <div class="tab">
+                <h3>Tappning</h3>
+            </div>
+        </div>
+        <div id="graph-containers">
+            <div class="graph-container"></div>
+            <div class="graph-container"></div>
+            <div class="graph-container selected"></div>
+            <div class="graph-container"></div>
+        </div>
+    </section>
+    <section id="dates">
+        <h3>Tidspann</h3>
+        <div id="dates-container">
+            <input type="date" id="start-date" name="start-date">
+            <input type="date" id="end-date" name="end-date">
+        </div>
+    </section>
+    <footer></footer>
+
     <script type="module" src="script.js"></script>
-  </body>
+</body>
+
 </html>
