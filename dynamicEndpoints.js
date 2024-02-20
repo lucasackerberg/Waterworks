@@ -1,15 +1,15 @@
-const KEY = "2414149e-cd81-41ba-926c-a8ed890f3503";
-const dataTypeSites = "MeasureSites";
-const dataTypeMeasurements = "Measurements";
-const site = "Landvetter";
-const measurementParam = "RainFall";
-const startDate = "2024-01-01";
-const endDate = "2024-01-04";
+// const KEY = "2414149e-cd81-41ba-926c-a8ed890f3503";
+// const dataTypeSites = "MeasureSites";
+// const dataTypeMeasurements = "Measurements";
+// const site = "Eriksberg";
+// const measurementParam = "RainFall";
+// const startDate = "2024-01-01";
+// const endDate = "2024-01-04";
 
 const sites = {
-  Agnesberg: "Agnesberg",
-  Arketjarn: "Arketjärn",
   Eriksberg: "Eriksberg",
+  Arketjarn: "Arketjärn",
+  Agnesberg: "Agnesberg",
   Garda: "Gårda dämme",
   Harsjo: "Härsjö dämme",
   Kalleredsbacken: "Kålleredsbäcken",
@@ -30,19 +30,35 @@ Object.entries(sites).forEach(([key, value]) => {
   console.log("Key:", key, ", Value:", value);
 });
 
-class Fetcher {
+export class Fetcher {
   constructor() {
     this.baseUrl = "https://data.goteborg.se/RiverService/v1.1/";
+    this.KEY = "2414149e-cd81-41ba-926c-a8ed890f3503";
+    this.dataTypeSites = "MeasureSites";
+    this.dataTypeMeasurements = "Measurements";
+    this.site = "Eriksberg";
+    this.measurementParam = "Level";
+    this.startDate = "2024-01-01";
+    this.endDate = "2024-01-08";
   }
 
-  async getSites() {
-    const response = await fetch(
-      `${this.baseUrl}/${dataTypeMeasurements}/${KEY}/${site}/${measurementParam}/${startDate}/${endDate}?format=json`
-    );
-    return response.json();
+  async getMeasurements() {
+    try {
+      const response = await fetch(
+        `${this.baseUrl}/${this.dataTypeMeasurements}/${this.KEY}/${this.site}/${this.measurementParam}/${this.startDate}/${this.endDate}?format=json`
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch data. Status: ${response.status}`);
+      }
+
+      return response.json();
+      
+    } catch (error) {
+      console.error("Error during data fetching:", error);
+      throw error; // Re-throw the error to propagate it to the caller
+    }
   }
 }
 
-// Usage:
-const fetcher = new Fetcher();
-fetcher.getSites().then((data) => console.log(data));
+
