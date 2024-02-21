@@ -6,6 +6,7 @@ let myData;
 let site;
 let startDate;
 let endDate;
+let selectedParameter;
 
 createSiteSelector();
 
@@ -23,7 +24,7 @@ getDataBtn.addEventListener("click", function () {
   // Check which measurment property tab is selected
   const selectedTab = document.querySelector(".tab.selected");
   // Get data attribute value from selecte tab
-  const selectedParameter = selectedTab.getAttribute("data");
+  selectedParameter = selectedTab.getAttribute("data");
   console.log(
     "Site: " + site,
     "Start date: " + startDate,
@@ -53,6 +54,7 @@ tabs.forEach((tab) => {
     const selectedTab = document.querySelector(".tab.selected");
     selectedTab.classList.remove("selected");
     tab.classList.add("selected");
+    selectedParameter = tab.getAttribute("data");
 
     //Adding "selected" class to graph with chosen index, and removing from the nonselected
     const selectedGraph = document.querySelector(".graph-container.selected");
@@ -61,6 +63,8 @@ tabs.forEach((tab) => {
       ".graph-container:nth-of-type(" + index + ")"
     );
     nextGraph.classList.add("selected");
+
+    // !!!!Call method to generate graph here, selectedParameter is the parameter to be used
   });
 });
 
