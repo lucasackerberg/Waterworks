@@ -3,14 +3,34 @@ import { Fetcher } from "./dynamicEndpoints.js";
 import { testChart } from "./chart.js";
 
 let myData;
+let site;
+let startDate;
+let endDate;
 
 createSiteSelector();
 
-const select = document.getElementById("siteSelector");
+const selectSite = document.getElementById("siteSelector");
+site = selectSite.value;
 
-select.addEventListener("change", function () {
-  let site = select.value;
+selectSite.addEventListener("change", function () {
+  site = selectSite.value;
   console.log(site);
+});
+
+const getDataBtn = document.getElementById("get-data-btn");
+
+getDataBtn.addEventListener("click", function () {
+  // Check which measurment property tab is selected
+  const selectedTab = document.querySelector(".tab.selected");
+  // Get data attribute value from selecte tab
+  const selectedParameter = selectedTab.getAttribute("data");
+  console.log(
+    "Site: " + site,
+    "Start date: " + startDate,
+    "End date: " + endDate,
+    "Selected parameter: " + selectedParameter
+  );
+
   smoothScroll();
 });
 
@@ -96,9 +116,19 @@ passedDate = passedDate.toISOString().split("T")[0];
 startDateInput.value = passedDate;
 endDateInput.value = today;
 
-let startDate = startDateInput.value;
-let endDate = endDateInput.value;
+startDate = startDateInput.value;
+endDate = endDateInput.value;
 
 //Date picker max date value = today (sorry, can't look into the future)
 startDateInput.max = today;
 endDateInput.max = today;
+
+startDateInput.addEventListener("change", function () {
+  startDate = startDateInput.value;
+  console.log(startDate);
+});
+
+endDateInput.addEventListener("change", function () {
+  endDate = endDateInput.value;
+  console.log(endDate);
+});

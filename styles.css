@@ -30,6 +30,7 @@ div#location-dates-container {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 24px;
 }
 
 section#location,
@@ -53,6 +54,16 @@ section#location > select {
 section#location > select > option {
   font-family: "Poppins", sans-serif;
   font-size: 1.5rem;
+}
+
+#get-data-btn {
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 1.5rem;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 #tabs {
@@ -142,11 +153,12 @@ section#dates {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
+    margin-bottom: 0;
   }
 
   section#location,
   section#dates {
-    width: calc(50% - 64px);
+    width: calc(33% - 43px);
   }
 
   header,
