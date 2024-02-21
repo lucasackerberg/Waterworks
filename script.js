@@ -1,5 +1,3 @@
-
-
 import { createSiteSelector } from "./siteSelector.js";
 import { Fetcher } from "./dynamicEndpoints.js";
 import { testChart } from "./chart.js";
@@ -31,9 +29,7 @@ tabs.forEach((tab) => {
     //Adding "selected" class to graph with chosen index, and removing from the nonselected
     const selectedGraph = document.querySelector(".graph-container.selected");
     selectedGraph.classList.remove("selected");
-    const nextGraph = document.querySelector(
-      ".graph-container:nth-of-type(" + index + ")"
-    );
+    const nextGraph = document.querySelector(".graph-container:nth-of-type(" + index + ")");
     nextGraph.classList.add("selected");
   });
 });
@@ -45,6 +41,7 @@ function getElementIndex(el) {
 
 // class for fetching data from API
 const fetcher = new Fetcher();
+
 fetcher.getMeasurements().then((data) => {
   myData = data;
   // Class for Dynamic chart
@@ -53,17 +50,15 @@ fetcher.getMeasurements().then((data) => {
   }
 ).catch((error) => console.error(error));
 
-
-
 /* Function for converting API timestamp to ISO date, eg "2024-01-01" */
 const timeStampsIntoDate = (timestamp) => {
-    timestamp = dataPoint.TimeStamp.split('(');
-    timestamp = timestamp[1].split('+');
-    timestamp = parseInt(timestamp[0]);
-    let date = new Date(timestamp);
-    date = date.toISOString().split("T")[0];
-    return date;
-}
+  timestamp = dataPoint.TimeStamp.split("(");
+  timestamp = timestamp[1].split("+");
+  timestamp = parseInt(timestamp[0]);
+  let date = new Date(timestamp);
+  date = date.toISOString().split("T")[0];
+  return date;
+};
 
 // const timeStampsIntoDate = (data) => {
 //   data.forEach((dataPoint) =>{
@@ -92,3 +87,6 @@ endDateInput.value = today;
 let startDate = startDateInput.value;
 let endDate = endDateInput.value;
 
+//Date picker max date value = today (sorry, can't look into the future)
+startDateInput.max = today;
+endDateInput.max = today;
