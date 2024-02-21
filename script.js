@@ -11,7 +11,15 @@ const select = document.getElementById("siteSelector");
 select.addEventListener("change", function () {
   let site = select.value;
   console.log(site);
+  smoothScroll();
 });
+
+// Scroll to result
+function smoothScroll() {
+  document.querySelector("#results").scrollIntoView({
+    behavior: "smooth",
+  });
+}
 
 // Tab logic
 const tabs = document.querySelectorAll(".tab");
@@ -29,7 +37,9 @@ tabs.forEach((tab) => {
     //Adding "selected" class to graph with chosen index, and removing from the nonselected
     const selectedGraph = document.querySelector(".graph-container.selected");
     selectedGraph.classList.remove("selected");
-    const nextGraph = document.querySelector(".graph-container:nth-of-type(" + index + ")");
+    const nextGraph = document.querySelector(
+      ".graph-container:nth-of-type(" + index + ")"
+    );
     nextGraph.classList.add("selected");
   });
 });
@@ -42,13 +52,15 @@ function getElementIndex(el) {
 // class for fetching data from API
 const fetcher = new Fetcher();
 
-fetcher.getMeasurements().then((data) => {
-  myData = data;
-  // Class for Dynamic chart
-  const rainfallChart = new testChart();
-  rainfallChart.fetchAllData(myData);
-  }
-).catch((error) => console.error(error));
+fetcher
+  .getMeasurements()
+  .then((data) => {
+    myData = data;
+    // Class for Dynamic chart
+    const rainfallChart = new testChart();
+    rainfallChart.fetchAllData(myData);
+  })
+  .catch((error) => console.error(error));
 
 /* Function for converting API timestamp to ISO date, eg "2024-01-01" */
 const timeStampsIntoDate = (timestamp) => {
