@@ -31,6 +31,7 @@ Object.entries(sites).forEach(([key, value]) => {
 });
 
 export class Fetcher {
+
   constructor() {
     this.baseUrl = "https://data.goteborg.se/RiverService/v1.1/";
     this.KEY = "2414149e-cd81-41ba-926c-a8ed890f3503";
@@ -38,7 +39,7 @@ export class Fetcher {
     this.dataTypeMeasurements = "Measurements";
     this.site = "Eriksberg";
     this.measurementParam = "Level";
-    this.startDate = "2024-01-01";
+    this.startDate = "2023-01-01";
     this.endDate = "2024-01-08";
   }
 

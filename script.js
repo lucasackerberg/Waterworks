@@ -1,5 +1,8 @@
 import { createSiteSelector } from "./siteSelector.js";
 import { Fetcher } from "./dynamicEndpoints.js";
+import { testChart } from "./chart.js";
+
+let myData;
 
 createSiteSelector();
 
@@ -36,13 +39,16 @@ function getElementIndex(el) {
   return [...el.parentElement.children].indexOf(el);
 }
 
+// class for fetching data from API
 const fetcher = new Fetcher();
-fetcher
-  .getMeasurements()
-  .then((data) => {
-    //console.log(data);
-  })
-  .catch((error) => console.error(error));
+
+fetcher.getMeasurements().then((data) => {
+  myData = data;
+  // Class for Dynamic chart
+  const rainfallChart = new testChart();
+  rainfallChart.fetchAllData(myData);
+  }
+).catch((error) => console.error(error));
 
 /* Function for converting API timestamp to ISO date, eg "2024-01-01" */
 const timeStampsIntoDate = (timestamp) => {
