@@ -65,6 +65,18 @@ tabs.forEach((tab) => {
     nextGraph.classList.add("selected");
 
     // !!!!Call method to generate graph here, selectedParameter is the parameter to be used
+    // if (selectedParameter === "Level") {
+    //   // Do something
+    // }
+    // if (selectedParameter === "RainFall") {
+    //   // Do something
+    // }
+    // if (selectedParameter === "Flow") {
+    //   // Do something
+    // }
+    // if (selectedParameter === "Tapping") {
+    //   // Do something
+    // }
   });
 });
 
