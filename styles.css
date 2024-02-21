@@ -20,10 +20,16 @@ header > h1 {
 }
 
 header,
-section#location,
-section#dates,
+div#location-dates-container,
 footer {
   margin: 0 12px;
+}
+
+div#location-dates-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 section#location,
@@ -31,6 +37,7 @@ section#dates {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 section#location > select {
@@ -87,6 +94,10 @@ section#location > select > option {
   font-weight: 800;
 }
 
+section#dates {
+  margin-bottom: 24px;
+}
+
 /* CHART STYLES */
 
 .graph-container {
@@ -94,9 +105,12 @@ section#location > select > option {
 }
 
 .graph-container.selected {
-  display: block;
-
-  height: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  /* height: 100vw; */
 }
 
 .graph-container:nth-of-type(1) {
@@ -116,7 +130,32 @@ section#location > select > option {
 }
 
 #myChart {
-  margin: 50px;
-  padding: 50px;
+  border-radius: 2px;
   background-color: white;
+  max-height: 100dvh;
+}
+
+/* Media query > 800 screen width */
+@media (min-width: 800px) {
+  div#location-dates-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  section#location,
+  section#dates {
+    width: calc(50% - 64px);
+  }
+
+  header,
+  div#location-dates-container,
+  section#results,
+  footer {
+    margin: 0 64px;
+  }
+  section#dates {
+    margin-bottom: 24px;
+  }
 }
