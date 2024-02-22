@@ -1,6 +1,5 @@
 export class testChart {
-  constructor() {
-  }
+  constructor() {}
   async fetchAllData(waterData) {
     const dataArray = this.parseData(waterData);
     this.renderChart(dataArray);
@@ -44,5 +43,3 @@ export class testChart {
     });
   }
 }
-
-

@@ -31,16 +31,15 @@ Object.entries(sites).forEach(([key, value]) => {
 });
 
 export class Fetcher {
-
-  constructor() {
+  constructor(site, startDate, endDate, selectedParameter) {
     this.baseUrl = "https://data.goteborg.se/RiverService/v1.1/";
     this.KEY = "2414149e-cd81-41ba-926c-a8ed890f3503";
     this.dataTypeSites = "MeasureSites";
     this.dataTypeMeasurements = "Measurements";
-    this.site = "Eriksberg";
-    this.measurementParam = "Level";
-    this.startDate = "2023-01-01";
-    this.endDate = "2024-01-08";
+    this.site = site;
+    this.measurementParam = selectedParameter;
+    this.startDate = startDate;
+    this.endDate = endDate;
   }
 
   async getMeasurements() {
@@ -54,12 +53,9 @@ export class Fetcher {
       }
 
       return response.json();
-      
     } catch (error) {
       console.error("Error during data fetching:", error);
       throw error; // Re-throw the error to propagate it to the caller
     }
   }
 }
-
-
