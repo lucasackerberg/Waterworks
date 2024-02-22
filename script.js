@@ -35,9 +35,10 @@ getDataBtn.addEventListener("click", function () {
     .getMeasurements()
     .then((data) => {
       myData = data;
-      // Class for Dynamic chart
-      if (canvas && canvas.chart) {
-        canvas.chart.destroy();
+      // Destroy exiting Chart Instance to reuse <canvas> element
+      const chartStatus = Chart.getChart("myChart");
+      if (chartStatus != undefined) {
+        chartStatus.destroy();
       }
       currentChart = new testChart();
       currentChart.fetchAllData(myData);
@@ -71,7 +72,9 @@ tabs.forEach((tab) => {
     //Adding "selected" class to graph with chosen index, and removing from the nonselected
     const selectedGraph = document.querySelector(".graph-container.selected");
     selectedGraph.classList.remove("selected");
-    const nextGraph = document.querySelector(".graph-container:nth-of-type(" + index + ")");
+    const nextGraph = document.querySelector(
+      ".graph-container:nth-of-type(" + index + ")"
+    );
     nextGraph.classList.add("selected");
 
     // !!!!Call method to generate graph here, selectedParameter is the parameter to be used
