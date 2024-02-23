@@ -31,7 +31,7 @@ export class testChart {
         labels: dataArray.map((row) => row.date),
         datasets: [
           {
-            label: "Uppmätt regn XX",
+            label: "Uppmätta värden",
             data: dataArray.map((row) => row.value),
             fill: true,
             borderColor: "#4A9DFF",
