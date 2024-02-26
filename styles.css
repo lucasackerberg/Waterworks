@@ -1,6 +1,10 @@
 :root {
   --blue: #1e90ff;
   --white: #ffffff;
+  --grey: #808080;
+  --medium-grey: #a1a1a1;
+  --medium-lightgrey: #c2c2c2;
+  --lightgrey: #d3d3d3;
 }
 
 * {
@@ -73,19 +77,19 @@ section#location > select > option {
 }
 
 .tab:nth-of-type(1) {
-  background-color: grey;
+  background-color: var(--grey);
 }
 
 .tab:nth-of-type(2) {
-  background-color: rgb(161, 161, 161);
+  background-color: var(--medium-grey);
 }
 
 .tab:nth-of-type(3) {
-  background-color: rgb(194, 194, 194);
+  background-color: var(--medium-lightgrey);
 }
 
 .tab:nth-of-type(4) {
-  background-color: lightgray;
+  background-color: var(--lightgrey);
 }
 
 .tab {
@@ -112,32 +116,13 @@ section#dates {
 /* CHART STYLES */
 
 .graph-container {
-  display: none;
-}
-
-.graph-container.selected {
   display: flex;
+  background-color: var(--grey);
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 8px;
   /* height: 100vw; */
-}
-
-.graph-container:nth-of-type(1) {
-  background-color: grey;
-}
-
-.graph-container:nth-of-type(2) {
-  background-color: rgb(161, 161, 161);
-}
-
-.graph-container:nth-of-type(3) {
-  background-color: rgb(194, 194, 194);
-}
-
-.graph-container:nth-of-type(4) {
-  background-color: lightgray;
 }
 
 #myChart {
