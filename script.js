@@ -8,6 +8,7 @@ let startDate = "2024-01-01";
 let endDate = "2024-01-08";
 let selectedParameter = "Level";
 let currentChart;
+let noData = document.getElementById("no-data");
 
 createSiteSelector();
 
@@ -33,8 +34,16 @@ function fetchDataAndDrawChart(site, startDate, endDate, selectedParameter) {
       }
       currentChart = new testChart();
       currentChart.fetchAllData(myData);
+      if (myData.length < 1) {
+        noData.style.display = "block";
+        console.log("dataArry is empty" + myData);
+      }
     })
     .catch((error) => console.error(error));
+}
+
+function hideData() {
+  noData.style.display = "none";
 }
 
 // Scroll to result
@@ -54,7 +63,11 @@ getDataBtn.addEventListener("click", function () {
   console.log(site);
 
   fetchDataAndDrawChart(site, startDate, endDate, selectedParameter);
+
   smoothScroll();
+
+  hideData();
+
 });
 
 // Tab logic
@@ -88,6 +101,7 @@ tabs.forEach((tab) => {
     if (selectedParameter === "Tapping") {
       graphContainer.style.backgroundColor = "var(--lightgrey)";
     }
+    hideData();
   });
 });
 
@@ -160,9 +174,4 @@ endDateInput.addEventListener("change", function () {
 });
 
 //Show graph when loading page
-Window.onload = fetchDataAndDrawChart(
-  site,
-  startDate,
-  endDate,
-  selectedParameter
-);
+Window.onload = fetchDataAndDrawChart(site, startDate, endDate, selectedParameter);

@@ -23,6 +23,10 @@ header > h1 {
   margin: 0;
 }
 
+.hidden {
+  display: none;
+}
+
 header,
 div#location-dates-container,
 footer {
