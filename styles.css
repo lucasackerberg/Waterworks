@@ -68,6 +68,12 @@ section#location > select > option {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+
+/* Change background-color to dark turquoise on hover */
+#get-data-btn:hover {
+  background-color: #007375;
 }
 
 #tabs {
@@ -98,6 +104,13 @@ section#location > select > option {
   flex-direction: row;
   justify-content: center;
   cursor: pointer;
+  transition: all 100ms ease-in-out;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab:hover {
+  color: var(--white);
+  font-weight: 800;
 }
 
 .tab > h3 {
@@ -154,5 +167,9 @@ section#dates {
   }
   section#dates {
     margin-bottom: 24px;
+  }
+
+  #graph-containers {
+    min-height: 100vh;
   }
 }

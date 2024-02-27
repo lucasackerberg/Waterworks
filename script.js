@@ -35,8 +35,6 @@ function fetchDataAndDrawChart(site, startDate, endDate, selectedParameter) {
       currentChart.fetchAllData(myData);
     })
     .catch((error) => console.error(error));
-
-  smoothScroll();
 }
 
 // Scroll to result
@@ -56,6 +54,7 @@ getDataBtn.addEventListener("click", function () {
   console.log(site);
 
   fetchDataAndDrawChart(site, startDate, endDate, selectedParameter);
+  smoothScroll();
 });
 
 // Tab logic
