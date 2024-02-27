@@ -40,8 +40,6 @@ function fetchDataAndDrawChart(site, startDate, endDate, selectedParameter) {
       }
     })
     .catch((error) => console.error(error));
-
-  smoothScroll();
 }
 
 function hideData() {
@@ -65,7 +63,11 @@ getDataBtn.addEventListener("click", function () {
   console.log(site);
 
   fetchDataAndDrawChart(site, startDate, endDate, selectedParameter);
+
+  smoothScroll();
+
   hideData();
+
 });
 
 // Tab logic
